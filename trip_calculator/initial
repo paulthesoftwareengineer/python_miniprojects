@@ -1,0 +1,19 @@
+
+kilometers = int(input("how many kilometers did you travel?"))
+liters_per_kilometer = int(input("how many iters_per_kilometer did you consume?"))
+price_per_liter = int(input("what was the price per liter of the fuel that you used?"))
+
+def trip_cost_calculator(kilometers, liters_per_kilometer, price_per_liter):
+  # Calculate the total fuel consumption for the trip
+  fuel_consumed = kilometers * liters_per_kilometer
+
+  # Calculate the cost of the fuel
+  fuel_cost = fuel_consumed * price_per_liter
+
+  # Return the total cost of the trip
+  return fuel_cost
+
+# Test the function with some example input values
+print(trip_cost_calculator(100, 0.5, 3.5))  # Output: 175.0
+print(trip_cost_calculator(200, 0.6, 4.0))  # Output: 480.0
+print(trip_cost_calculator(300, 0.7, 4.5))  # Output: 855.0

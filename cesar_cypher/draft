@@ -1,0 +1,40 @@
+secret = "I hear the gooseberries are doing well this year, and so are the mangoes."
+cipher = 7
+
+# function
+def shift_char(char, cipher):
+  # Convert the character to its ASCII code
+  ascii_code = ord(char)
+  # Shift the ASCII code by the cipher
+  shifted_code = ascii_code + cipher
+  # If the shifted code is outside the range of uppercase or lowercase ASCII codes, wrap it back around
+  if char.isupper():
+    if shifted_code > ord('Z'):
+      shifted_code -= 26
+    elif shifted_code < ord('A'):
+      shifted_code += 26
+  else:
+    if shifted_code > ord('z'):
+      shifted_code -= 26
+    elif shifted_code < ord('a'):
+      shifted_code += 26
+  # Convert the shifted code back to a character and return it
+  return chr(shifted_code)
+
+# define a function that takes a string and shifts all of its characters by the given cipher
+def caesar_cipher(string, cipher):
+  # Initialize an empty list to store the shifted characters
+  shifted_chars = []
+  # Iterate through each character in the string
+  for char in string:
+    # If the character is a letter, shift it and add it to the list. If it's not a letter, just add it as is.
+    if char.isalpha():
+      shifted_chars.append(shift_char(char, cipher))
+    else:
+      shifted_chars.append(char)
+  # Join the shifted characters and return the resulting string
+  return ''.join(shifted_chars)
+
+# apply the Caesar cipher to the secret message
+encrypted_secret = caesar_cipher(secret, cipher)
+print(encrypted_secret)
